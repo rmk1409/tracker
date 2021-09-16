@@ -6,7 +6,6 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
-import java.sql.Timestamp;
 import java.util.List;
 
 public class HibernateRun {
@@ -28,9 +27,9 @@ public class HibernateRun {
                 System.out.println(it);
             }
 
-            create(new Item("name1", "descr1", new Timestamp(System.currentTimeMillis())), sf);
-            create(new Item("name2", "descr2", new Timestamp(System.currentTimeMillis())), sf);
-            create(new Item("name3", "descr3", new Timestamp(System.currentTimeMillis())), sf);
+            create(new Item("name1", "descr1"), sf);
+            create(new Item("name2", "descr2"), sf);
+            create(new Item("name3", "descr3"), sf);
         }  catch (Exception e) {
             e.printStackTrace();
         } finally {

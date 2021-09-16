@@ -12,7 +12,8 @@ public class Item {
     private int id;
     private String name;
     private String description;
-    private Timestamp created;
+    @Column(nullable = false, columnDefinition = "TIMESTAMP default now()")
+    private Timestamp created = new Timestamp(System.currentTimeMillis());
 
     public Item() {
 
@@ -22,10 +23,9 @@ public class Item {
         this.name = name;
     }
 
-    public Item(String name, String description, Timestamp created) {
+    public Item(String name, String description) {
         this.name = name;
         this.description = description;
-        this.created = created;
     }
 
     public int getId() {
@@ -69,12 +69,12 @@ public class Item {
             return false;
         }
         Item item = (Item) o;
-        return id == item.id && Objects.equals(name, item.name) && Objects.equals(description, item.description) && Objects.equals(created, item.created);
+        return id == item.id;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, description, created);
+        return Objects.hash(id);
     }
 
     @Override
