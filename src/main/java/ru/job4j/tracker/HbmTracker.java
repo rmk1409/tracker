@@ -72,7 +72,7 @@ public class HbmTracker implements Store, AutoCloseable {
     public Item findById(String id) {
         Item item;
         try (Session session = sf.openSession()) {
-            item = session.get(Item.class, id);
+            item = session.get(Item.class, Integer.parseInt(id));
         }
         return item;
     }
