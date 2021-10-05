@@ -18,6 +18,13 @@ public class Tracker {
         return List.copyOf(items);
     }
 
+    public void findAllByReact(Observe<Item> observe) throws InterruptedException {
+        for (Item item : items) {
+            observe.receive(item);
+            Thread.sleep(200);
+        }
+    }
+
     public Item findById(int id) {
         int index = indexOf(id);
         return index != -1 ? items.get(index) : null;
